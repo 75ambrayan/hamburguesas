@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>¿Unas Hamburguesitas o que?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background: #fff8e7;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden; /* Para que el botón no se salga */
+    }
+    h1 {
+      color: #d35400;
+      margin-bottom: 30px;
+    }
+    img {
+      width: 200px;
+      margin-bottom: 20px;
+    }
+    .botones {
+      position: relative;
+      width: 100%;
+      height: 200px; /* área para que el botón "No" se mueva */
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: 0.2s;
+      position: absolute;
+    }
+    .si {
+      background-color: #27ae60;
+      color: white;
+      left: 35%;
+      top: 70px;
+    }
+    .no {
+      background-color: #c0392b;
+      color: white;
+      left: 55%;
+      top: 70px;
+    }
+  </style>
+</head>
+<body>
+<h1>¿Unas Hamburguesitas o que? 🍔</h1>
+<img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" alt="Hamburguesa">
+
+<div class="botones">
+  <button class="si" onclick="aceptar()">¡Sí, obvio! 😍</button>
+  <button class="no" id="btnNo">No ❌</button>
+</div>
+
+<script>
+  const btnNo = document.getElementById("btnNo");
+  const botonesDiv = document.querySelector(".botones");
+
+  btnNo.addEventListener("mouseenter", () => {
+    // mover a posición aleatoria dentro del área
+    const maxX = botonesDiv.clientWidth - btnNo.offsetWidth;
+    const maxY = botonesDiv.clientHeight - btnNo.offsetHeight;
+
+    const randomX = Math.floor(Math.random() * maxX);
+    const randomY = Math.floor(Math.random() * maxY);
+
+    btnNo.style.left = randomX + "px";
+    btnNo.style.top = randomY + "px";
+  });
+
+  function aceptar() {
+    alert("¡Sabía que dirías que sí! 🍔🔥");
+  }
+</script>
+</body>
+</html>
