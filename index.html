@@ -2,84 +2,73 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>¿Unas Hamburguesitas o que?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¿Quieres hamburguesas?</title>
   <style>
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      background: #fff8e7;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       margin: 0;
-      overflow: hidden; /* Para que el botón no se salga */
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+      background: url("https://images.unsplash.com/photo-1550547660-d9450f859349?w=1200") no-repeat center center fixed;
+      background-size: cover;
     }
     h1 {
-      color: #d35400;
-      margin-bottom: 30px;
-    }
-    img {
-      width: 200px;
-      margin-bottom: 20px;
-    }
-    .botones {
-      position: relative;
-      width: 100%;
-      height: 200px; /* área para que el botón "No" se mueva */
+      margin-top: 60px;
+      color: white;
+      text-shadow: 2px 2px 5px black;
     }
     button {
-      padding: 10px 20px;
       font-size: 18px;
+      padding: 10px 20px;
+      margin: 10px;
       border: none;
       border-radius: 10px;
       cursor: pointer;
-      transition: 0.2s;
       position: absolute;
     }
-    .si {
-      background-color: #27ae60;
+    #yes {
+      background: #198754;
       color: white;
-      left: 35%;
-      top: 70px;
+      position: static;
     }
-    .no {
-      background-color: #c0392b;
+    #no {
+      background: #dc3545;
       color: white;
-      left: 55%;
-      top: 70px;
+      left: 50%;
+      top: 60%;
     }
   </style>
 </head>
 <body>
-<h1>¿Unas Hamburguesitas o que? 🍔</h1>
-<img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png" alt="Hamburguesa">
-
-<div class="botones">
-  <button class="si" onclick="aceptar()">¡Sí, obvio! 😍</button>
-  <button class="no" id="btnNo">No ❌</button>
-</div>
+<h1>¿Quieres hamburguesas conmigo? 🍔❤️</h1>
+<button id="yes">Sí</button>
+<button id="no">No</button>
 
 <script>
-  const btnNo = document.getElementById("btnNo");
-  const botonesDiv = document.querySelector(".botones");
+  const btnNo = document.getElementById("no");
+  const btnYes = document.getElementById("yes");
 
-  btnNo.addEventListener("mouseenter", () => {
-    // mover a posición aleatoria dentro del área
-    const maxX = botonesDiv.clientWidth - btnNo.offsetWidth;
-    const maxY = botonesDiv.clientHeight - btnNo.offsetHeight;
-
-    const randomX = Math.floor(Math.random() * maxX);
-    const randomY = Math.floor(Math.random() * maxY);
-
-    btnNo.style.left = randomX + "px";
-    btnNo.style.top = randomY + "px";
+  // Botón "Sí"
+  btnYes.addEventListener("click", () => {
+    alert("¡Sabía que dirías que sí! 🥳🍔");
   });
 
-  function aceptar() {
-    alert("¡Sabía que dirías que sí! 🍔🔥");
+  // Función para mover el botón "No"
+  function moverBoton() {
+    const x = Math.random() * (window.innerWidth - btnNo.offsetWidth);
+    const y = Math.random() * (window.innerHeight - btnNo.offsetHeight);
+    btnNo.style.left = `${x}px`;
+    btnNo.style.top = `${y}px`;
   }
+
+  // En PC → se mueve al pasar el mouse
+  btnNo.addEventListener("mouseover", moverBoton);
+
+  // En Celular → se mueve al tocarlo
+  btnNo.addEventListener("touchstart", moverBoton);
 </script>
 </body>
 </html>
